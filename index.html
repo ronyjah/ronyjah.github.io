@@ -1,1001 +1,303 @@
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-        <meta name="generator" content="Jekyll v4.1.1">
-        <link href="logo.webp" rel="shortcut icon">
-        <title>AutoBEC R6</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <link href="logo.webp" rel="shortcut icon">
+    <title>AutoBEC R6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
-        <!-- Bootstrap core CSS -->
-        <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <style>
+    <style>
+        /* Estilize a div que contém a tabela */
+        #table-container {
+            display: inline-block; /* Permite que a div se comporte como um bloco em linha */
+            width: 50%; /* Ajuste a largura conforme necessário */
+            vertical-align: top; /* Alinhe a parte superior da div */
+        }
 
-            alert-icon {
-                font-size: 40px;
-                color: #FFD000; /* Preto */
-                background-color: black; /* Amarelo escuro */
-                width: 60px;
-                height: 60px;
-                text-align: center;
-                line-height: 60px;
-                border-radius: 50%;
-                position: relative;
+        /* Estilize a div que contém o formulário */
+        #form-container {
+            display: inline-block; /* Permite que a div se comporte como um bloco em linha */
+            width: 50%; /* Ajuste a largura conforme necessário */
+            vertical-align: top; /* Alinhe a parte superior da div */
+        }
+        alert-icon {
+            font-size: 40px;
+            color: #FFD000; /* Preto */
+            background-color: black; /* Amarelo escuro */
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 50%;
+            position: relative;
+        }
+        .alert-container {
+
+            position: relative;
+            display: inline-block;
+        }
+        .alert-icon::before {
+            content: "\26A0"; /* Código Unicode HEX U+26A0 para o ícone de alerta */
+            font-size: 30px; /* Tamanho do ícone */
+            position: absolute;
+            color: #FF7000; 
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .alert-text {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(5%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        .alert-text ul {
+            white-space: nowrap; /* Impede quebras de linha */
+        }
+
+        .alert-icon:hover + .alert-text {
+            display: block;
+        }
+        .alert-container:hover .alert-text {
+            display: block;
+        }
+
+
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
             }
-            .alert-container {
+        }
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 70px;
+            left: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
 
-                position: relative;
-                display: inline-block;
-            }
-            .alert-icon::before {
-                content: "\26A0"; /* Código Unicode HEX U+26A0 para o ícone de alerta */
-                font-size: 30px; /* Tamanho do ícone */
-                position: absolute;
-                color: #FF7000; 
+        .logo-image{
+            width: 70px;
+            height: 70px;
 
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+            margin-top: 6px;
+        }
+        .table2 {
+            margin-left: 10rem;
+            margin-top: 00px;
+            width: 80%;
+        }
+        .mar2 {
+            margin-left: 10px;
+            font-weight: bold;
+        }
 
-            .alert-text {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                transform: translateX(5%);
-                background-color: rgba(0, 0, 0, 0.9);
-                color: white;
-                padding: 5px 10px;
-                border-radius: 10px;
-            }
-            .alert-text ul {
-                white-space: nowrap; /* Impede quebras de linha */
-            }
+        .mar3 {
+            margin-left: 60px;
+        }
+        .loader {
+            border: 5px solid #f3f3f3; /* Light grey */
+            border-top: 5px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+        }
 
-            .alert-icon:hover + .alert-text {
-                display: block;
-            }
-            .alert-container:hover .alert-text {
-                display: block;
-            }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .sidenav a {
+            padding: 6px 6px 6px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
 
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
 
+        .main {
+            margin-left: 200px; /* Same as the width of the sidenav */
+        }
 
-            .bd-placeholder-img {
-                font-size: 1.125rem;
-                text-anchor: middle;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
 
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
-                    font-size: 3.5rem;
-                }
-            }
-            .sidenav {
-                height: 100%;
-                width: 200px;
-                position: fixed;
-                z-index: 1;
-                top: 70px;
-                left: 0;
-                overflow-x: hidden;
-                padding-top: 20px;
-            }
+        #table-scroll {
+            height:400px;
+            overflow-x:hidden;
+            overflow-y:auto;
+            margin-top:40px;
+            display: inline-block
+        }
 
-            .logo-image{
-                width: 70px;
-                height: 70px;
+        .relative {
+            position: relative;
+            left: 30px;
+        }
 
-                margin-top: 6px;
-            }
-            .table2 {
-                margin-left: 10rem;
-                margin-top: 00px;
-                width: 80%;
-            }
-            .mar2 {
-                margin-left: 10px;
-                font-weight: bold;
-            }
+        .stop{
+            visibility: ;
+        }
 
-            .mar3 {
-                margin-left: 60px;
-            }
-            .loader {
-                border: 5px solid #f3f3f3; /* Light grey */
-                border-top: 5px solid #3498db; /* Blue */
-                border-radius: 50%;
-                width: 20px;
-                height: 20px;
-                animation: spin 2s linear infinite;
-            }
-
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
-            .sidenav a {
-                padding: 6px 6px 6px 32px;
-                text-decoration: none;
-                font-size: 25px;
-                color: #818181;
-                display: block;
-            }
-
-            .sidenav a:hover {
-                color: #f1f1f1;
-            }
-
-            .main {
-                margin-left: 200px; /* Same as the width of the sidenav */
-            }
-
-            @media screen and (max-height: 450px) {
-                .sidenav {padding-top: 15px;}
-                .sidenav a {font-size: 18px;}
-            }
-
-            #table-scroll {
-              height:400px;
-              overflow-x:hidden;
-              overflow-y:auto;
-              margin-top:40px;
-          }
-
-          .relative {
-              position: relative;
-              left: 30px;
-          }
-
-          .stop{
-              visibility: ;
-          }
-
-          .linha {
+        .linha {
             color: white;
             font-size: 15px; /* Tamanho do ícone */
             position: relative;
             left: 100px;
         }
 
+        .linha_device {
+            color: white;
+            font-size: 15px;
+            position: relative;
+            left: 200px;
+        }
+        .timer_rest {
+            color: black;
+            font-size: 15px; /* Tamanho do ícone */
+            position: relative;
+            left: 100px;
+        }
+
+        .item {
+            position: relative;
+            float: left;
+        }
+
+        .item h2 {
+            font-size:20px;
+            text-align:center;
+            position: absolute;
+            line-height: 125px;
+            width: 100%;
+
+        }
+        #status-indicator {
+            position: relative;
+            left: 200px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: red; /* Inicialmente vermelho */
+        }
     </style>
-    <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="logo-image" href="/"> <img src="logo.webp" class="img-fluid">
-            <a class="navbar-brand mar2">AutoBEC R6  <a class="linha"> <span id="DUT"> </span></a>   </a>
-        </a>
 
-
-
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-    <div class="dropdown-menu" aria-labelledby="dropdown01">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    </div>
-    </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-</form> -->
-</div>
-</nav>
-
-
-    <!-- <div class="sidenav bg-dark navbar-dark">
-    <a href="#">Testes</a>
-    <a href="#">Capturas</a>
-    <a href="#">Relatórios</a>
-</div> -->
-<main role="main" class="container">
-
-    <!-- <div class="starter-template">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-</div> -->
-    <!-- <span class="badge badge-primary">Testando</span>
-    <span class="badge badge-success">Successo</span>
-    <span class="badge badge-warning">Pendente</span>
-    <span class="badge badge-dark">Testar</span>
-    <span class="badge badge-danger">Falha</span> -->
-
-
-
-
-    <div id="table-scroll">
-        <table class="table table2">
-            <thead>
-                <tr>
-                    <th scope="col">Dica</th>
-                    <th scope="col">Test</th>
-                    <th scope="col">Group</th>
-                    <th scope="col">Action</th>
-                    <th scope="col"></th>
-
-                    <!-- td><span id="status1" class="badge badge-success">Successo</span></td> -->
-                    <!-- <td><span id="status4" class="badge badge-warning">Pendente</span></td> -->
-                </tr>
-            </thead>
-            <tbody >
-
-                <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-
-                      <th scope="row">
-                        1.6.1: ROUTER SOLICITATION TRANSMISSION
-                    </th>
-                    <td>WAN</td>
-                    <td><button id="Test161" class="badge badge-dark" onclick="toggleButton(this.id);" >Run</button></td>
-                    <td><button id="stop_Test161" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                </tr>
-
-                <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text">
-                                <ul>
-                                  <li>Configure a ONT:</li>
-                                  <li>Modo de operação da WAN: IPoE.</li>
-                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul>
-                              </div>
-                          </div>
-                      </td>
-
-                      <th scope="row">1.6.2: L FLAG PROCESSING Part A</th>
-                      <td>WAN</td>
-                      <td><button id="Test162a" class="badge badge-dark" onclick=" toggleButton(this.id);" >Run</button></td>
-                      <td><button id="stop_Test162a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row">1.6.2: L FLAG PROCESSING Part B</th>
-                      <td>WAN</td>
-                      <td><button id="Test162b" class="badge badge-dark" onclick=" toggleButton(this.id);" >Run</button></td>
-                      <td><button id="stop_Test162b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row">1.6.3: RECONFIGURE MESSAGE: Part A</th>
-                      <td>WAN</td>
-                      <td><button id="Test163a" class="badge badge-dark" onclick=" toggleButton(this.id);" >Run</button></td>
-                      <td><button id="stop_Test163a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-
-
-                      <tr>  
-                        <td>
-                            <!-- Div de alerta -->
-                            <div class="alert-container">
-                                <span class="alert-icon"></span>
-                                <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
-                                  <li>Modo de operação da WAN: IPoE.</li>
-                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                              </div>
-                          </td>
-
-                          <th scope="row"> 1.6.3: RECONFIGURE MESSAGE: Part B</th>
-                          <td>WAN</td>
-                          <td><button id="Test163b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test163b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                      </tr>
-
-
-                      <tr>  
-                        <td>
-                            <!-- Div de alerta -->
-                            <div class="alert-container">
-                                <span class="alert-icon"></span>
-                                <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
-                                  <li>Modo de operação da WAN: IPoE.</li>
-                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                              </div>
-                          </td>
-
-                          <th scope="row"> 1.6.3: RECONFIGURE MESSAGE: Part C</th>
-                          <td>WAN</td>
-                          <td><button id="Test163c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test163c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                      </tr>
-
-
-
-                      <tr>  
-                        <td>
-                            <!-- Div de alerta -->
-                            <div class="alert-container">
-                                <span class="alert-icon"></span>
-                                <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
-                                  <li>Modo de operação da WAN: IPoE.</li>
-                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                              </div>
-                          </td>
-
-                          <th scope="row"> 1.6.3: RECONFIGURE MESSAGE: Part D</th>
-                          <td>WAN</td>
-                          <td><button id="Test163d" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test163d" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                      </tr>
-
-
-
-
-                      <tr>  
-                        <td>
-                            <!-- Div de alerta -->
-                            <div class="alert-container">
-                                <span class="alert-icon"></span>
-                                <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
-                                  <li>Modo de operação da WAN: IPoE.</li>
-                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                              </div>
-                          </td>
-
-                          <th scope="row"> 1.6.4: M FLAG PROCESSING</th>
-                          <td>WAN</td>
-                          <td><button id="Test164a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test164a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                      </tr>
-
-
-
-
-
-                      <tr>  
-                        <td>
-                            <!-- Div de alerta -->
-                            <div class="alert-container">
-                                <span class="alert-icon"></span>
-                                <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
-                                  <li>Modo de operação da WAN: IPoE.</li>
-                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                              </div>
-                          </td>
-
-                          <th scope="row"> 1.6.6: M AND O FLAG FOR PREFIX DELEGATION Part A</th>
-                          <td>WAN</td>
-                          <td><button id="Test166a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test166a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                      </tr>
-
-
-                      <tr>  
-                        <td>
-                            <!-- Div de alerta -->
-                            <div class="alert-container">
-                                <span class="alert-icon"></span>
-                                <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
-                                  <li>Modo de operação da WAN: IPoE.</li>
-                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                              </div>
-                          </td>
-
-                          <th scope="row"> 1.6.6: M AND O FLAG FOR PREFIX DELEGATION Part B</th>
-                          <td>WAN</td>
-                          <td><button id="Test166b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                      </tr>
-
-
-
-                      <tr>  
-                        <td>
-                            <!-- Div de alerta -->
-                            <div class="alert-container">
-                                <span class="alert-icon"></span>
-                                <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
-                                  <li>Modo de operação da WAN: IPoE.</li>
-                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                              </div>
-                          </td>
-
-                          <th scope="row"> 1.6.7: DYNAMIC ROUTING PROTOCOL</th>
-                          <td>WAN</td>
-                          <td><button id="Test167" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test167" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                      </tr>
-
-
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row">2.7.1: ASSIGNING PREFIXES TO LAN INTERFACES Part A</th>
-                      <td>LAN</td>
-                      <td><button id="Test271a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test271a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.1: ASSIGNING PREFIXES TO LAN INTERFACES Part B</th>
-                      <td>LAN</td>
-                      <td><button id="Test271b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test271b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.1: ASSIGNING PREFIXES TO LAN INTERFACES Part C</th>
-                      <td>LAN</td>
-                      <td><button id="Test271c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test271c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.2: ROUTE INFORMATION OPTION Part A</th>
-                      <td>LAN</td>
-                      <td><button id="Test272a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.2: ROUTE INFORMATION OPTION Part B</th>
-                      <td>LAN</td>
-                      <td><button id="Test272b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test272b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.3: NO PREFIXES DELEGATED Part A</th>
-                      <td>LAN</td>
-                      <td><button id="Test273a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test273a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.3: NO PREFIXES DELEGATED Part B</th>
-                      <td>LAN</td>
-                      <td><button id="Test273b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test273a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.3: NO PREFIXES DELEGATED Part C</th>
-                      <td>LAN</td>
-                      <td><button id="Test273c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test273c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.4: DNS INFORMATION IN ROUTER ADVERTISEMENT PART A</th>
-                      <td>LAN</td>
-                      <td><button id="Test274a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test274a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.4: DNS INFORMATION IN ROUTER ADVERTISEMENT PART B</th>
-                      <td>LAN</td>
-                      <td><button id="Test274b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test274b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.5: PREFIX CHANGE PART A</th>
-                      <td>LAN</td>
-                      <td><button id="Test275a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test275a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.5: PREFIX CHANGE PART B</th>
-                      <td>LAN</td>
-                      <td><button id="Test275b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test275b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.5: PREFIX CHANGE PART C</th>
-                      <td>LAN</td>
-                      <td><button id="Test275c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test275c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.5: PREFIX CHANGE PART D</th>
-                      <td>LAN</td>
-                      <td><button id="Test275d" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test275d" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 2.7.6: UNKNOWN PREFIX</th>
-                      <td>LAN</td>
-                      <td><button id="Test276" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test276" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 3.2.1: IPV6 FORWARDING BEFORE ADDRESS ACQUISITION PART A</th>
-                      <td>FORWARDING</td>
-                      <td><button id="Test321a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test321a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row">  3.2.1: IPV6 FORWARDING BEFORE ADDRESS ACQUISITION PART B</th>
-                      <td>FORWARDING</td>
-                      <td><button id="Test321b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test321b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 3.2.2: NO DEFAULT ROUTE PART A</th>
-                      <td>FORWARDING</td>
-                      <td><button id="Test322a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test322a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 3.2.2: NO DEFAULT ROUTE PART B</th>
-                      <td>FORWARDING</td>
-                      <td><button id="Test322b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test322b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row"> 3.2.3: FORWARDING LOOPS PART A</th>
-                      <td>FORWARDING</td>
-                      <td><button id="Test323a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test323a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-                  <tr>  
-                    <td>
-                        <!-- Div de alerta -->
-                        <div class="alert-container">
-                            <span class="alert-icon"></span>
-                            <div class="alert-text"><ul>
-                              <li>Configure a ONT:</li>
-                              <li>Modo de operação da WAN: IPoE.</li>
-                              <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
-                              <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
-                              <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
-                              <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                              <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
-                          </div>
-                      </td>
-
-                      <th scope="row">  3.2.3: FORWARDING LOOPS PART B</th>
-                      <td>FORWARDING</td>
-                      <td><button id="Test323b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                      <td><button id="stop_Test323b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
-                  </tr>
-
-                  <tr>  
-                    <td>
-                    </td>
-                    
-                    <th scope="row"> Testes Não Mandatórios</th>
-                    <td>--</td>
-                    <td>Action</td>
-                </tr>
-
-                <tr>  
-                    <td>
-                    </td>
-                    
+        <link href="starter-template.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <a class="logo-image" href="/"> <img src="logo.webp" class="img-fluid">
+                <a class="navbar-brand mar2">AutoBEC R6  <a class="linha"> <span id="DUT"> </span> <a class="linha_device">Status De conexão DUT:  </a><a id="status-indicator"></a></a>   </a>
+            </a>
+
+        </div>
+
+    </nav>
+    <main role="main" class="container">
+
+        <div id="table-scroll">
+
+            <table class="table table2">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Dica</th>
+                        <th scope="col">Test</th>
+                        <th scope="col">Group</th>
+                        <th scope="col">Action</th>
+                        <th scope="col"></th>
+
+                        <!-- td><span id="status1" class="badge badge-success">Successo</span></td> -->
+                        <!-- <td><span id="status4" class="badge badge-warning">Pendente</span></td> -->
+                    </tr>
+                </thead>
+                <tbody >
 
                     <tr>  
                         <td>
                             <!-- Div de alerta -->
                             <div class="alert-container">
                                 <span class="alert-icon"></span>
-                                <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
+                                <div class="alert-text">
+                                <ul>
+                                  Configure a ONT
                                   <li>Modo de operação da WAN: IPoE.</li>
                                   <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
                                   <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
                                   <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
                                   <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
-                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li>
+                                </ul>
+                            </div>
                               </div>
                           </td>
 
-                          <th scope="row"> 1.6.5: PREFIX DELEGATION SIZE Part A</th>
+
+                          <th scope="row">
+                            1.6.1: ROUTER SOLICITATION TRANSMISSION
+                        </th>
+                        <td>WAN</td>
+                        <td><button id="Test161" class="badge badge-dark" onclick="toggleButton(this.id);" >Run</button></td>
+                        <td><button id="stop_Test161" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                    </tr>
+
+                    <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text">
+                                    <ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul>
+                                  </div>
+                              </div>
+                          </td>
+
+                          <th scope="row">1.6.2: L FLAG PROCESSING Part A</th>
                           <td>WAN</td>
-                          <td><button id="Test165a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test165a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          <td><button id="Test162a" class="badge badge-dark" onclick=" toggleButton(this.id);" >Run</button></td>
+                          <td><button id="stop_Test162a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
                       </tr>
 
                       <tr>  
@@ -1004,7 +306,7 @@
                             <div class="alert-container">
                                 <span class="alert-icon"></span>
                                 <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
+                                  Configure a ONT
                                   <li>Modo de operação da WAN: IPoE.</li>
                                   <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
                                   <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
@@ -1014,10 +316,10 @@
                               </div>
                           </td>
 
-                          <th scope="row"> 1.6.5: PREFIX DELEGATION SIZE Part B</th>
+                          <th scope="row">1.6.2: L FLAG PROCESSING Part B</th>
                           <td>WAN</td>
-                          <td><button id="Test165b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test165b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          <td><button id="Test162b" class="badge badge-dark" onclick=" toggleButton(this.id);" >Run</button></td>
+                          <td><button id="stop_Test162b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
                       </tr>
 
                       <tr>  
@@ -1026,7 +328,7 @@
                             <div class="alert-container">
                                 <span class="alert-icon"></span>
                                 <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
+                                  Configure a ONT
                                   <li>Modo de operação da WAN: IPoE.</li>
                                   <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
                                   <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
@@ -1036,18 +338,211 @@
                               </div>
                           </td>
 
-                          <th scope="row"> 2.7.7: UNIQUE LOCAL ADDRESS PREFIX PART A</th>
+                          <th scope="row">1.6.3: RECONFIGURE MESSAGE: Part A</th>
+                          <td>WAN</td>
+                          <td><button id="Test163a" class="badge badge-dark" onclick=" toggleButton(this.id);" >Run</button></td>
+                          <td><button id="stop_Test163a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 1.6.3: RECONFIGURE MESSAGE: Part B</th>
+                              <td>WAN</td>
+                              <td><button id="Test163b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test163b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 1.6.3: RECONFIGURE MESSAGE: Part C</th>
+                              <td>WAN</td>
+                              <td><button id="Test163c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test163c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 1.6.3: RECONFIGURE MESSAGE: Part D</th>
+                              <td>WAN</td>
+                              <td><button id="Test163d" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test163d" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+
+
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 1.6.4: M FLAG PROCESSING</th>
+                              <td>WAN</td>
+                              <td><button id="Test164" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test164" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+
+
+
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 1.6.6: M AND O FLAG FOR PREFIX DELEGATION Part A</th>
+                              <td>WAN</td>
+                              <td><button id="Test166a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test166a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 1.6.6: M AND O FLAG FOR PREFIX DELEGATION Part B</th>
+                              <td>WAN</td>
+                              <td><button id="Test166b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test166b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 1.6.7: DYNAMIC ROUTING PROTOCOL</th>
+                              <td>WAN</td>
+                              <td><button id="Test167" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test167" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row">2.7.1: ASSIGNING PREFIXES TO LAN INTERFACES Part A</th>
                           <td>LAN</td>
-                          <td><button id="Test277a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test277a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          <td><button id="Test271a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test271a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
                       </tr>
+
+
                       <tr>  
                         <td>
                             <!-- Div de alerta -->
                             <div class="alert-container">
                                 <span class="alert-icon"></span>
                                 <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
+                                  Configure a ONT
                                   <li>Modo de operação da WAN: IPoE.</li>
                                   <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
                                   <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
@@ -1057,18 +552,19 @@
                               </div>
                           </td>
 
-                          <th scope="row"> 2.7.7: UNIQUE LOCAL ADDRESS PREFIX PART B</th>
+                          <th scope="row"> 2.7.1: ASSIGNING PREFIXES TO LAN INTERFACES Part B</th>
                           <td>LAN</td>
-                          <td><button id="Test277b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test277b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          <td><button id="Test271b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test271b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
                       </tr>
+
                       <tr>  
                         <td>
                             <!-- Div de alerta -->
                             <div class="alert-container">
                                 <span class="alert-icon"></span>
                                 <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
+                                  Configure a ONT
                                   <li>Modo de operação da WAN: IPoE.</li>
                                   <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
                                   <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
@@ -1078,10 +574,10 @@
                               </div>
                           </td>
 
-                          <th scope="row"> 2.7.7: UNIQUE LOCAL ADDRESS PREFIX PART C</th>
+                          <th scope="row"> 2.7.1: ASSIGNING PREFIXES TO LAN INTERFACES Part C</th>
                           <td>LAN</td>
-                          <td><button id="Test277c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test277c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          <td><button id="Test271c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test271c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
                       </tr>
 
                       <tr>  
@@ -1090,7 +586,7 @@
                             <div class="alert-container">
                                 <span class="alert-icon"></span>
                                 <div class="alert-text"><ul>
-                                  <li>Configure a ONT:</li>
+                                  Configure a ONT
                                   <li>Modo de operação da WAN: IPoE.</li>
                                   <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
                                   <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
@@ -1100,55 +596,749 @@
                               </div>
                           </td>
 
-                          <th scope="row"> 3.2.4: UNIQUE LOCAL ADDRESS FORWARDING</th>
+                          <th scope="row"> 2.7.2: ROUTE INFORMATION OPTION Part A</th>
+                          <td>LAN</td>
+                          <td><button id="Test272a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test272a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.2: ROUTE INFORMATION OPTION Part B</th>
+                          <td>LAN</td>
+                          <td><button id="Test272b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test272b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.3: NO PREFIXES DELEGATED Part A</th>
+                          <td>LAN</td>
+                          <td><button id="Test273a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test273a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.3: NO PREFIXES DELEGATED Part B</th>
+                          <td>LAN</td>
+                          <td><button id="Test273b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test273b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.3: NO PREFIXES DELEGATED Part C</th>
+                          <td>LAN</td>
+                          <td><button id="Test273c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test273c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.4: DNS INFORMATION IN ROUTER ADVERTISEMENT PART A</th>
+                          <td>LAN</td>
+                          <td><button id="Test274a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test274a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.4: DNS INFORMATION IN ROUTER ADVERTISEMENT PART B</th>
+                          <td>LAN</td>
+                          <td><button id="Test274b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test274b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.5: PREFIX CHANGE PART A</th>
+                          <td>LAN</td>
+                          <td><button id="Test275a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test275a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.5: PREFIX CHANGE PART B</th>
+                          <td>LAN</td>
+                          <td><button id="Test275b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test275b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.5: PREFIX CHANGE PART C</th>
+                          <td>LAN</td>
+                          <td><button id="Test275c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test275c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.5: PREFIX CHANGE PART D</th>
+                          <td>LAN</td>
+                          <td><button id="Test275d" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test275d" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 2.7.6: UNKNOWN PREFIX</th>
+                          <td>LAN</td>
+                          <td><button id="Test276" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test276" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 3.2.1: IPV6 FORWARDING BEFORE ADDRESS ACQUISITION PART A</th>
                           <td>FORWARDING</td>
-                          <td><button id="Test324" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
-                          <td><button id="stop_Test324" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          <td><button id="Test321a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test321a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
                       </tr>
-                  </tbody>
-              </table>
-          </div>
-          <style>
-            .mar4 {
-                margin-left: 160px;
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row">  3.2.1: IPV6 FORWARDING BEFORE ADDRESS ACQUISITION PART B</th>
+                          <td>FORWARDING</td>
+                          <td><button id="Test321b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test321b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 3.2.2: NO DEFAULT ROUTE PART A</th>
+                          <td>FORWARDING</td>
+                          <td><button id="Test322a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test322a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 3.2.2: NO DEFAULT ROUTE PART B</th>
+                          <td>FORWARDING</td>
+                          <td><button id="Test322b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test322b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row"> 3.2.3: FORWARDING LOOPS PART A</th>
+                          <td>FORWARDING</td>
+                          <td><button id="Test323a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test323a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+                      <tr>  
+                        <td>
+                            <!-- Div de alerta -->
+                            <div class="alert-container">
+                                <span class="alert-icon"></span>
+                                <div class="alert-text"><ul>
+                                  Configure a ONT
+                                  <li>Modo de operação da WAN: IPoE.</li>
+                                  <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                  <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                  <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                  <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                  <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                              </div>
+                          </td>
+
+                          <th scope="row">  3.2.3: FORWARDING LOOPS PART B</th>
+                          <td>FORWARDING</td>
+                          <td><button id="Test323b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                          <td><button id="stop_Test323b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                      </tr>
+
+                      <tr>  
+                        <td>
+                        </td>
+
+                        <th scope="row"> Testes Não Mandatórios</th>
+                        <td>--</td>
+                        <td>Action</td>
+                    </tr>
+
+                    <tr>  
+                        <td>
+                        </td>
+
+
+                        <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 1.6.5: PREFIX DELEGATION SIZE Part A</th>
+                              <td>WAN</td>
+                              <td><button id="Test165a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test165a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 1.6.5: PREFIX DELEGATION SIZE Part B</th>
+                              <td>WAN</td>
+                              <td><button id="Test165b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test165b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 2.7.7: UNIQUE LOCAL ADDRESS PREFIX PART A</th>
+                              <td>LAN</td>
+                              <td><button id="Test277a" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test277a" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 2.7.7: UNIQUE LOCAL ADDRESS PREFIX PART B</th>
+                              <td>LAN</td>
+                              <td><button id="Test277b" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test277b" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 2.7.7: UNIQUE LOCAL ADDRESS PREFIX PART C</th>
+                              <td>LAN</td>
+                              <td><button id="Test277c" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test277c" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+
+                          <tr>  
+                            <td>
+                                <!-- Div de alerta -->
+                                <div class="alert-container">
+                                    <span class="alert-icon"></span>
+                                    <div class="alert-text"><ul>
+                                      Configure a ONT
+                                      <li>Modo de operação da WAN: IPoE.</li>
+                                      <li>Modo de endereçamento IP6: Auto Detect ou Stateless(SLAAC) mode.</li>
+                                      <li>Habilitar na LAN o endereçamento IPv6 Prefix Delegation via Conexão WAN.</li>
+                                      <li>Habilitar na LAN o endereçamento RNDSS via Conexão WAN.</li>
+                                      <li>Se estiver rodando em máquina virtual, desabilite o IPv6 nas interfaces de rede sob teste.</li>
+                                      <li>Ao clicar no botão Run do software de teste desligue e ligue o roteador da tomada.</li></ul></div>
+                                  </div>
+                              </td>
+
+                              <th scope="row"> 3.2.4: UNIQUE LOCAL ADDRESS FORWARDING</th>
+                              <td>FORWARDING</td>
+                              <td><button id="Test324" type="button" class="badge badge-dark" onclick=" toggleButton(this.id);">Run</button></td>
+                              <td><button id="stop_Test324" class="badge badge-danger stop" onclick="toggleButtonStop(this.id);">Stop</button></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+
+              <style>
+                .mar4 {
+                    margin-left: 160px;
+                }
+            </style>
+
+
+            <p id="demo"></p>
+            <div id="demo" class="form-group table2">
+                <label for="exampleFormControlTextarea1">Log messages WAN</label>
+                <textarea   id="demomo" class="form-control" id="exampleFormControlTextarea1" rows="5" readonly></textarea>
+            </div>
+            <!-- <a href="lan.cap" download>dowload</a> -->
+            <div id="demo2" class="form-group table2">
+                <label for="exampleFormControlTextarea1">Log Messages LAN</label>
+                <textarea  id="demolan"  class="form-control" id="exampleFormControlTextarea1" rows="5" readonly></textarea>
+            </div>
+
+
+<form id="reboot-form">
+    <label for="ip" style="display: inline-block; margin-left:150px; width: 80px;">End. IP:</label>
+    <input type="text" id="ip" name="ip" required style="display: inline-block; width: 120px;">
+    
+    <label for="username" style="display: inline-block; width: 80px;">Usuário:</label>
+    <input type="text" id="username" name="username" required style="display: inline-block; width: 120px;">
+    
+    <label for="password" style="display: inline-block; width: 80px;">Senha:</label>
+    <input type="text" id="password" name="password" required style="display: inline-block; width: 120px;">
+
+    <label for="connection-type" style="display: inline-block; width: 80px;">Conexão:</label>
+    <select id="connection-type" name="connection-type" style="display: inline-block; width: 100px;">
+        <option value="ssh">SSH</option>
+        <option value="telnet">Telnet</option>
+    </select>
+
+    <button type="submit" class="badge badge-dark" id="reboot-button" style="display: inline-block;">Reiniciar</button>
+</form>
+            <label class="mar4">Gerar Relatório Padrão ANATEL</label>
+            <button  id="form1" type="button" class="badge badge-dark mar3" onclick=" anatelButton(this.id);">Gerar</button>
+
+            <label class="mar5">Gerar Relatório Parcial</label>
+            <button  id="formReport" type="button" class="badge badge-dark mar3" onclick=" partialReportButton(this.id);">Gerar</button>
+            <a class="timer_rest">Tempo restante de teste: <span id="tempo">0</span> s</a>
+        <!-- <p id="pingStatus"></p> -->
+
+
+
+
+
+        </main><!-- /.container -->
+        <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+    <script>
+        const statusIndicator = document.getElementById("status-indicator");
+        function atualizarStatus(status) {
+                        
+
+            //document.getElementById("pingStatus").innerHTML = status;
+        }
+
+    function verificarStatus() {
+        fetch("http://127.0.0.1:5000/ping")
+            .then(response => response.json())
+            .then(data => {
+                // Imprimir o conteúdo retornado (Online ou Offline)
+                console.log("Conteúdo retornado:", data.status);
+                atualizarStatus(data.status);
+                if (data.status == "Online"){
+                 statusIndicator.style.backgroundColor = "green";
+                }else{
+                    statusIndicator.style.backgroundColor = "red";
+                }
+
+            })
+            .catch(error => {
+                atualizarStatus("Erro ao verificar o status do ping.");
+            });
+    }
+
+    </script>
+
+    <script>
+        verificarStatus();
+        setInterval(verificarStatus, 3000); 
+
+    const ipInput = document.getElementById("ip");
+        function validarIP() {
+            const ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
+            const ipValue = ipInput.value;
+
+            if (!ipRegex.test(ipValue)) {
+                alert("Formato de endereço IP inválido. Use o formato xxx.xxx.xxx.xxx");
+                ipInput.value = "";
+
+                return false;
             }
-        </style>
+
+            return true;
+        }
 
 
-        <p id="demo"></p>
-        <div id="demo" class="form-group table2">
-            <label for="exampleFormControlTextarea1">Log messages WAN</label>
-            <textarea   id="demomo" class="form-control" id="exampleFormControlTextarea1" rows="5" readonly></textarea>
-        </div>
-        <!-- <a href="lan.cap" download>dowload</a> -->
-        <div id="demo2" class="form-group table2">
-            <label for="exampleFormControlTextarea1">Log Messages LAN</label>
-            <textarea  id="demolan"  class="form-control" id="exampleFormControlTextarea1" rows="5" readonly></textarea>
-        </div>
-        <label class="mar4">Gerar Relatório Padrão ANATEL</label>
-        <button  id="form" type="button" class="badge badge-dark mar3" onclick=" anatelButton(this.id);">Gerar</button>
+    document.querySelector("form").addEventListener('submit', function (e) {
+        if (!validarIP()) {
+            e.preventDefault(); // Impede o envio do formulário se o formato do IP for inválido
+            $("button").removeAttr('disabled');
+            clearInterval(interval);
+            return false
+        }else{
+            const selectedConnectionType = document.getElementById("connection-type").value;
+            console.log("aeee")
 
-        <label class="mar5">Gerar Relatório Parcial</label>
-        <button  id="formReport" type="button" class="badge badge-dark mar3" onclick=" partialReportButton(this.id);">Gerar</button>
+            if (selectedConnectionType === "ssh") {
+                // Chama a função para reiniciar via SSH
+                reboot_device_ssh();
+                 e.preventDefault(); 
+            } else if (selectedConnectionType === "telnet") {
+                // Chama a função para reiniciar via Telnet
+                reboot_device_telnet();
+            }
 
-    </main><!-- /.container -->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-</script>
+        }
+        return false;
+    });
 
-<script>
-    // $("button").click(function() {
-    // var test_id =    this.id; // or alert($(this).attr('id'));
-    // });
-    const toggleButtonStop = (button_id) => {
-      var xhttp = new XMLHttpRequest();
+function reboot_device_ssh(callback) {
+    console.log("reboot_device_ssh")
+    var ip = document.getElementById('ip').value;
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var data = {
+        ip: ip,
+        username: username,
+        password: password
+    };
+    console.log("lklklklklklkl")
+    console.log(data)
+    var requestBodyJSON = JSON.stringify(data);
+    var url = "http://127.0.0.1:5000/reboot_ssh";
+    var xhttp = new XMLHttpRequest();
+    
+    xhttp.open("POST", url, true);  // Altere "GET" para "POST"
+    xhttp.setRequestHeader("Content-Type", "application/json");
 
-      xhttp.onreadystatechange = function() {
-          if (this.status == 200) {
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4) { // Verifica se a solicitação foi concluída
+            if (this.status === 200) {
+                console.log("OK reboot");
+                $("button").removeAttr('disabled');
+                clearInterval(interval);
+            } else {
+                console.log("Falha reboot");
+                $("button").removeAttr('disabled');
+                clearInterval(interval);
+            }
+        }
+    };
+    xhttp.send(requestBodyJSON);
+    return false
+}
 
+
+function reboot_device_telnet(callback) {
+
+    var ip = document.getElementById('ip').value;
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var data = {
+        ip: ip,
+        username: username,
+        password: password
+    };
+    var requestBodyJSON = JSON.stringify(data);
+    var url = "http://127.0.0.1:5000/reboot_telnet";
+    var xhttp = new XMLHttpRequest();
+    
+    xhttp.open("POST", url, true);  // Altere "GET" para "POST"
+    xhttp.setRequestHeader("Content-Type", "application/json");
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4) { // Verifica se a solicitação foi concluída
+            if (this.status === 200) {
+                console.log("OK reboot");
+                $("button").removeAttr('disabled');
+                clearInterval(interval);
+            } else {
+                console.log("Falha reboot");
+                $("button").removeAttr('disabled');
+                clearInterval(interval);
+            }
+        }
+    };
+    xhttp.send(requestBodyJSON);
+}
+
+        var fetchOptions = {
+method: 'GET', // Ou 'POST' ou qualquer outro método necessário
+cache: 'no-store', // Configura a política de cache para 'no-store'
+'Cache-Control': 'no-cache, no-store', 
+};
+// $("button").click(function() {
+// var test_id =    this.id; // or alert($(this).attr('id'));
+// });
+const toggleButtonStop = (button_id) => {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.status == 200) {
+        // alert(test_id);
+            $("button").removeAttr('disabled');
+            let resultado = button_id.replace(/^stop_/, '');
+            document.getElementById(resultado).innerText = "Fail";
+            document.getElementById(resultado).className = "badge badge-danger";            
+            i_restante = 250;
+            document.getElementById('tempo').textContent = i_restante;
             clearInterval(interval);
         }else{
-
+            i_restante = 250;
+            $("button").removeAttr('disabled');
+            let resultado = button_id.replace(/^stop_/, '');
+            document.getElementById(resultado).innerText = "Fail";
+            document.getElementById(resultado).className = "badge badge-danger"; 
+            document.getElementById('tempo').textContent = i_restante;
             clearInterval(interval);
         }
     };
@@ -1163,34 +1353,41 @@
 
 function toggleButton(button_id) 
 {
-  var xhttp = new XMLHttpRequest();
 
-  xhttp.onreadystatechange = function() {
-      if (this.status == 200) {
-        document.getElementById("demomo").innerHTML = this.responseText;
-        document.getElementById(button_id).innerText = "Running";
-        document.getElementById(button_id).className = "badge badge-primary";
-        document.getElementById("stop_"+button_id).style.visibility = "visible";
-    }else{
-        document.getElementById(button_id).innerText = "Rejected";
-        document.getElementById(button_id).className = "badge badge-danger";
-        document.getElementById("stop_"+button_id).style.visibility = "hidden";
-    }
-};
-var url = "http://127.0.0.1:5000/active/";
-var test = button_id;
-var complete_url = url.concat(test);
-          // alert(complete_url);
-xhttp.open("GET",complete_url,true);
-xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xhttp.send();
+
+/* Need initial run as interval hasn't yet occured... */
+
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.status == 200) {
+            document.getElementById("demomo").innerHTML = this.responseText;
+            document.getElementById(button_id).innerText = "Running";
+            document.getElementById(button_id).className = "badge badge-primary";
+            document.getElementById("stop_"+button_id).style.visibility = "visible";
+        }else{
+            document.getElementById(button_id).innerText = "Rejected";
+            document.getElementById(button_id).className = "badge badge-danger";
+            document.getElementById("stop_"+button_id).style.visibility = "hidden";
+
+
+        }
+    };
+    var url = "http://127.0.0.1:5000/active/";
+    var test = button_id;
+    var complete_url = url.concat(test);
+// alert(complete_url);
+    xhttp.open("GET",complete_url,true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
 
 
 }
 
 
 const options = {
-        //...
+//...
     timeout: 3000,
 };
 
@@ -1204,42 +1401,101 @@ function anatelButton(button_id,callback)
 
     xhttp.onreadystatechange = () => {
 
-        console.log('OPENED', xhttp.readyState); // readyState will be 1
+console.log('OPENED', xhttp.readyState); // readyState will be 1
 
-        xhttp.onprogress = () => {
-            console.log('LOADING', xhttp.readyState); // readyState will be 3
-        };
-
-
-
-        console.log('testeee')
-        if (xhttp.readyState === 4) {
-          console.log('testeee1111')
-          xhttp.onload = () => {
-            console.log('DONE', xhttp.readyState); // readyState will be 4
-            //var link=document.createElement('a');
-
-        };
+xhttp.onprogress = () => {
+console.log('LOADING', xhttp.readyState); // readyState will be 3
+};
 
 
 
-        
-    }
-    //document.open();
-    //document.write(xhttp.response); 
-    //document.close()
-
-          //$( "html" ).replaceWith( xhttp.response );
+console.log('testeee')
+if (xhttp.readyState === 4) {
+    console.log('testeee1111')
+    xhttp.onload = () => {
+console.log('DONE', xhttp.readyState); // readyState will be 4
+//var link=document.createElement('a');
+};
 
 }
-var link=document.createElement('a');
-              //var link = '<a href="http://127.0.0.1:5000/report"></a>'
+
+}
+
+console.log("aaa1");
+var fetch_feito = false
+console.log("aaaaaaaaa")
+var link = document.createElement('a');
 document.body.appendChild(link);
-console.log(link)
-url = 'http://127.0.0.1:5000/report'
-console.log(url)
-link.href=url ;
-link.click(); 
+console.log("aaa2")
+var url = 'http://127.0.0.1:5000/report';
+
+// Adicione um ouvinte de evento 'click' ao link
+link.addEventListener('click', function (event) {
+    console.log("aaa3")
+// Impedir o comportamento padrão de navegação
+    event.preventDefault();
+
+// Faça uma requisição HTTP ou qualquer outra ação que você precisa aqui
+    fetch(url,fetchOptions)
+    .then(function (response) {
+        console.log("aaa4")
+        fetch_feito = true;
+        console.log(response);
+// Verifique a resposta
+        if (response.statusText === "None") {
+            console.log("AUTOBEC")
+// Se a resposta nao foi bem-sucedida, navegue para a URL
+//window.location.reload();
+            $("button").removeAttr('disabled');
+            clearInterval(interval)
+            $("button").removeAttr('disabled');
+        } else {
+            console.log("REPORT")
+            return response.blob();
+//window.location.href = url;
+
+// Se a resposta for bem-sucedida, faça algo diferente, como exibir uma mensagem de erro
+            console.log('Erro ao carregar a página:', response.status);
+// Ou redirecionar para outra URL, se necessário
+// window.location.href = 'outra_url';
+        }
+    })
+    .then(function (blob) {
+// Cria um URL temporário para o Blob
+        var blobUrl = URL.createObjectURL(blob);
+
+// Crie um link âncora para iniciar o download
+        var link = document.createElement('a');
+        link.href = blobUrl;
+link.download = 'relatorio.pdf'; // Nome do arquivo de download
+
+// Dispare o clique no link para iniciar o download
+link.click();
+
+// Revoga o URL temporário após o download
+URL.revokeObjectURL(blobUrl);
+$("button").removeAttr('disabled');
+clearInterval(interval)
+$("button").removeAttr('disabled');
+})
+    .catch(function (error) {
+// Lidar com erros de rede ou outras exceções aqui
+        $("button").removeAttr('disabled');
+        clearInterval(interval)
+        $("button").removeAttr('disabled');
+        console.error('Erro na requisição:', error);
+    });
+});
+if (fetch_feito == false){
+    console.log("CLICK")
+// Defina o href após adicionar o ouvinte de evento para evitar a navegação imediata
+    fetch_feito = true
+    link.click();
+
+}else{
+    console.log("feito---")
+    fetch_feito = true;
+}
 
 }
 
@@ -1253,46 +1509,46 @@ function partialReportButton(button_id,callback)
 
     xhttp.onreadystatechange = () => {
 
-        console.log('OPENED', xhttp.readyState); // readyState will be 1
+console.log('OPENED', xhttp.readyState); // readyState will be 1
 
-        xhttp.onprogress = () => {
-            console.log('LOADING', xhttp.readyState); // readyState will be 3
-        };
-
-
-        console.log('a2')
-        console.log('testeee')
-        if (xhttp.readyState === 4) {
-          console.log('testeee1111')
-          xhttp.onload = () => {
-            console.log('DONE', xhttp.readyState); // readyState will be 4
-            //var link=document.createElement('a');
-
-        };
+xhttp.onprogress = () => {
+console.log('LOADING', xhttp.readyState); // readyState will be 3
+};
 
 
+console.log('a2')
+console.log('testeee')
+if (xhttp.readyState === 4) {
+    console.log('testeee1111')
+    xhttp.onload = () => {
+console.log('DONE', xhttp.readyState); // readyState will be 4
+//var link=document.createElement('a');
 
-        
-    }
+};
+
+
+
+
+}
 
 
 }     
 console.log('a3')
 var link=document.createElement('a');
-            //   //var link = '<a href="http://127.0.0.1:5000/report"></a>'
+//   //var link = '<a href="http://127.0.0.1:5000/report"></a>'
 document.body.appendChild(link);
 console.log(link)
 url = 'http://127.0.0.1:5000/htmlreport'
 console.log(url)
 link.href=url ;
 link.click(); 
-            //window.location.href = "helloworld.html";
+//window.location.href = "helloworld.html";
 }
 
 
 
 
-           // Função para ler e processar o arquivo JSON
+// Função para ler e processar o arquivo JSON
 function lerArquivoJSON() {
 
 
@@ -1300,44 +1556,44 @@ function lerArquivoJSON() {
 
 
     var testItems = [
-      "Test161",
-      "Test162a",
-      "Test162b",
-      "Test163a",
-      "Test163b",
-      "Test163c",
-      "Test163d",
-      "Test164",
-      "Test165",
-      "Test166a",
-      "Test166b",
-      "Test167",
-      "Test271a",
-      "Test271b",
-      "Test271c",
-      "Test272a",
-      "Test272b",
-      "Test273a",
-      "Test273b",
-      "Test273c",
-      "Test274a",
-      "Test274b",
-      "Test275a",
-      "Test275b",
-      "Test275c",
-      "Test275d",
-      "Test276",
-      "Test277a",
-      "Test277b",
-      "Test277c",
-      "Test321a",
-      "Test321b",
-      "Test322a",
-      "Test322b",
-      "Test323a",
-      "Test323b",
-      "Test324"
-      ];
+        "Test161",
+        "Test162a",
+        "Test162b",
+        "Test163a",
+        "Test163b",
+        "Test163c",
+        "Test163d",
+        "Test164",
+        "Test165",
+        "Test166a",
+        "Test166b",
+        "Test167",
+        "Test271a",
+        "Test271b",
+        "Test271c",
+        "Test272a",
+        "Test272b",
+        "Test273a",
+        "Test273b",
+        "Test273c",
+        "Test274a",
+        "Test274b",
+        "Test275a",
+        "Test275b",
+        "Test275c",
+        "Test275d",
+        "Test276",
+        "Test277a",
+        "Test277b",
+        "Test277c",
+        "Test321a",
+        "Test321b",
+        "Test322a",
+        "Test322b",
+        "Test323a",
+        "Test323b",
+        "Test324"
+        ];
 
 
 
@@ -1358,157 +1614,165 @@ function lerArquivoJSON() {
     xhr.send();
     console.log("POS_FABRICANTE_");
 
-                // Loop for para percorrer os itens da lista
+// Loop for para percorrer os itens da lista
     for (var i = 0; i < testItems.length; i++) {
         function processarItem(item) {
 
             console.log(testItems[i]);
 
-                                 // Use uma expressão regular para adicionar um ponto após cada número
+     // Use uma expressão regular para adicionar um ponto após cada número
             var comPontos = testItems[i].replace(/\d/g, '$&.');
 
-                        console.log(comPontos); // Resultado: "Teste1.6.2a"
+console.log(comPontos); // Resultado: "Teste1.6.2a"
 
-                        // Use uma expressão regular para remover o último ponto
-                        var semUltimoPonto = comPontos.replace(/\.(?=[^.]*$)/, "");
+var semUltimoPonto = comPontos.replace(/\.(?=[^.]*$)/, "");
 
-                        console.log(semUltimoPonto); // Resultado: "Test1.6.2a"
+console.log(semUltimoPonto); // Resultado: "Test1.6.2a"
 
-                        var numComPontos = semUltimoPonto.slice(4);
+var numComPontos = semUltimoPonto.slice(4);
 
-                        resultadoFinal = "resultados/res_t"+numComPontos
+resultadoFinal = "resultados/res_t"+numComPontos
 
-                        console.log(resultadoFinal)
+console.log(resultadoFinal)
 
-                        var xhr1 = new XMLHttpRequest();
-                        xhr1.open("GET", resultadoFinal, true);
-                        var cpc = testItems[i] 
+var xhr1 = new XMLHttpRequest();
+xhr1.open("GET", resultadoFinal, true);
+var cpc = testItems[i] 
 
-                        xhr1.onreadystatechange = function () {
-                            // Verifique se a solicitação foi concluída e bem-sucedida
-                            if (xhr1.readyState === 4 && xhr1.status === 200) {
-                                // Analise o JSON do arquivo
+xhr1.onreadystatechange = function () {
+// Verifique se a solicitação foi concluída e bem-sucedida
+    if (xhr1.readyState === 4 && xhr1.status === 200) {
+    // Analise o JSON do arquivo
 
-                                var dados = JSON.parse(xhr1.responseText);
-                                console.log(dados)
+        var dados = JSON.parse(xhr1.responseText);
+        console.log(dados)
 
-                                // Acesse o campo "MENSAGEM"
-                                var mensagem = dados.RESULTADO;
-                                console.log
+    // Acesse o campo "MENSAGEM"
+        var mensagem = dados.RESULTADO;
+        console.log
 
-                                // Se o valor for "TRUE", mude a cor do botão para verde
-                                if (mensagem === "APROVADO") {
-                                    $("button").removeAttr('disabled');
-                                    console.log(numComPontos)
-                                    //document.getElementById().style.backgroundColor = "green";
-                                    document.getElementById(cpc).innerText = "Success";
-                                    document.getElementById(cpc).className = "badge badge-success"
-                                }else if (mensagem == 'REPROVADO'){
-                                    console.log(numComPontos)
-                                    // alert(test_id);
-                                    $("button").removeAttr('disabled');
-                                    document.getElementById(cpc).innerText = "Fail";
-                                    document.getElementById(cpc).className = "badge badge-danger";
-                                }
-                            }
-                        };
-                        xhr1.send();
-                    }
-                    processarItem(testItems[i]);
-                    // Envie a solicitação
-                }
+    // Se o valor for "TRUE", mude a cor do botão para verde
+        if (mensagem === "APROVADO") {
+            $("button").removeAttr('disabled');
+            console.log(numComPontos)
+        //document.getElementById().style.backgroundColor = "green";
+            document.getElementById(cpc).innerText = "Success";
+            document.getElementById(cpc).className = "badge badge-success"
+        }else if (mensagem == 'REPROVADO'){
+            console.log(numComPontos)
+        // alert(test_id);
+            $("button").removeAttr('disabled');
+            document.getElementById(cpc).innerText = "Fail";
+            document.getElementById(cpc).className = "badge badge-danger";
+        }
+    }
+};
+xhr1.send();
+}
+processarItem(testItems[i]);
+}
+
+}
+window.onload = lerArquivoJSON;
+
+var tt= setInterval(function() {
+
+}, 1000);
+
+
+var test_id = 'None';
+var msg_lan = 'None';
+var msg_wan = 'None';
+var i_restante = 250;
+    $("button[id^='Test']" || "button[id^='stop_Test']" ).click(function() {
+        test_id = this.id;
+        $("button").attr('disabled','disabled');
+        $("#stop_"+test_id).removeAttr('disabled')
+        if (this.id != 'form1'){
+            interval = setInterval(function(){
+                document.getElementById('tempo').textContent = i_restante;
+                i_restante--; 
+                loadDoc();
+
+
+            },1000);
+        }
+    })
+
+function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.status == 200) {
+            if (this.responseText == 'APROVADO'){
+                $("button").removeAttr('disabled');
+                document.getElementById("stop_"+test_id).style.visibility = "hidden";
+                document.getElementById(test_id).innerText = "Success";
+                document.getElementById(test_id).className = "badge badge-success";
+                i_restante = 250;
+                document.getElementById('tempo').textContent = i_restante;
+                clearInterval(interval);
 
             }
-            window.onload = lerArquivoJSON;
+            else if (this.responseText == 'REPROVADO'){
+                $("button").removeAttr('disabled');
+                let resultado = test_id.replace(/^stop_/, '');
+                document.getElementById(resultado).innerText = "Fail";
+                document.getElementById(resultado).className = "badge badge-danger";
+                i_restante = 250;
+                document.getElementById('tempo').textContent = i_restante;
+                clearInterval(interval);
 
+            }
+            else if (this.responseText != ''){
+                msg_wan = this.responseText;
+                document.getElementById("demomo").innerHTML = msg_wan;}
+            }
+        };
+        xhttp.open("GET","http://127.0.0.1:5000/WAN",true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send();
 
-
-
-
-            var test_id = 'None';
-            var msg_lan = 'None';
-            var msg_wan = 'None';
-            $("button").click(function() {
-      // if(test_id == 'None'){
-              test_id = this.id;
-          // alert(test_id);
-        // }
-              $("button").attr('disabled','disabled');
-              $("#stop_"+test_id).removeAttr('disabled')
-              if (this.id != 'form'){
-                  interval = setInterval(function(){
-        // $("button").attr('disabled','disabled');
-                    loadDoc();
-
-
-                },1000);
-              }
-          })
-            function loadDoc() {
-    // $("button").attr('disabled','disabled');
-                var xhttp = new XMLHttpRequest();
-
-                xhttp.onreadystatechange = function() {
-                  if (this.status == 200) {
-                    if (this.responseText == 'APROVADO'){
-                      $("button").removeAttr('disabled');
-                      document.getElementById("stop_"+test_id).style.visibility = "hidden";
-              // alert(test_id);
-                      document.getElementById(test_id).innerText = "Success";
-                      document.getElementById(test_id).className = "badge badge-success";
-                      clearInterval(interval);
-                  }
-                  else if (this.responseText == 'REPROVADO'){
-            // alert(test_id);
-                    $("button").removeAttr('disabled');
-                    let resultado = test_id.replace(/^stop_/, '');
-                    document.getElementById(resultado).innerText = "Fail";
-                    document.getElementById(resultado).className = "badge badge-danger";
-                    clearInterval(interval);
-                }
-                else if (this.responseText != ''){
-                  msg_wan = this.responseText;
-                  document.getElementById("demomo").innerHTML = msg_wan;}
-              }
-          };
-          xhttp.open("GET","http://127.0.0.1:5000/WAN",true);
-          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          xhttp.send();
-
-          var xhttp_lan = new XMLHttpRequest();
-          xhttp_lan.onreadystatechange = function() {
-              if (this.status == 200) {
+        var xhttp_lan = new XMLHttpRequest();
+        xhttp_lan.onreadystatechange = function() {
+            if (this.status == 200) {
                 console.log("debugando")
                 console.log(this.responseText)
                 if (this.responseText == 'APROVADO'){
-                  $("button").removeAttr('disabled');
-                  document.getElementById("stop_"+test_id).style.visibility = "hidden";
-                  document.getElementById(test_id).innerText = "Success";
-                  document.getElementById(test_id).className = "badge badge-success";
-                  clearInterval(interval);
-              }
-              else if (this.responseText == 'REPROVADO'){
-                  $("button").removeAttr('disabled');
-                  console.log(test_id)
-                  let resultado = test_id.replace(/^stop_/, '');
-                  console.log(resultado)
-                  document.getElementById(resultado).innerText = "Fail";
-                  document.getElementById(resultado).className = "badge badge-danger";
-                  clearInterval(interval);
-              }
-              else if (this.responseText !== ''){
-                  msg_lan = this.responseText;
-                  document.getElementById("demolan").innerHTML = msg_lan;}
-              }
-          };
-          xhttp_lan.open("GET","http://127.0.0.1:5000/LAN",true);
-          xhttp_lan.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          xhttp_lan.send();
-      };
-  </script>
+                    $("button").removeAttr('disabled');
+                    document.getElementById("stop_"+test_id).style.visibility = "hidden";
+                    document.getElementById(test_id).innerText = "Success";
+                    document.getElementById(test_id).className = "badge badge-success";
+                    i_restante = 250;
+                    document.getElementById('tempo').textContent = i_restante;
+                    clearInterval(interval);
+                }
+                else if (this.responseText == 'REPROVADO'){
+                    $("button").removeAttr('disabled');
+                    console.log(test_id)
+                    let resultado = test_id.replace(/^stop_/, '');
+                    console.log(resultado)
+                    document.getElementById(resultado).innerText = "Fail";
+                    document.getElementById(resultado).className = "badge badge-danger";
+                    i_restante = 250;
+                    document.getElementById('tempo').textContent = i_restante;                      
+                    clearInterval(interval);
+                }
+                else if (this.responseText !== ''){
+                    msg_lan = this.responseText;
+                    document.getElementById("demolan").innerHTML = msg_lan;}
+                }
+            };
+            xhttp_lan.open("GET","http://127.0.0.1:5000/LAN",true);
+            xhttp_lan.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp_lan.send();
+        };
 
 
-  <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 
-  </body>
-  </html>
+    </script>
+
+
+    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    </body>
+    </html>
